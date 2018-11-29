@@ -5,8 +5,428 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simple_paint"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Simple Paint" Height="784" Width="1382" Icon="Image/paint.png">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="137*"/>
+            <RowDefinition Height="616*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="1">
+            <Canvas x:Name="paintCanvas">
+                <Canvas.ContextMenu>
+                    <ContextMenu>
+
+                        <MenuItem Header="Copy">
+
+                        </MenuItem>
+                        <MenuItem Header="Paste">
+
+                        </MenuItem>
+                        <MenuItem Header="Cut">
+
+                        </MenuItem>
+                    </ContextMenu>
+                </Canvas.ContextMenu>
+            </Canvas>
+
+        </ScrollViewer>
+        <Ribbon x:Name="rib" >
+            <!--<Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton x:Name="Undo" SmallImageSource="Image/Undo.png"/>
+                    <RibbonButton x:Name="Redo" SmallImageSource="Image/Redo.png"/>
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>-->
+
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenu.Background>
+                        <ImageBrush ImageSource="Image/File-btn.png"/>
+                    </RibbonApplicationMenu.Background>
+
+                    <RibbonApplicationMenuItem Header="_Open" InputGestureText="Ctrl+O" ImageSource="Image/Open-icon.png" Click="MenuItem_Click" />
+                    <RibbonApplicationMenuItem Header="_Save" InputGestureText="Ctrl+S" ImageSource="Image/save.png"/>
+                    <RibbonApplicationMenuItem Header="S_ave As" ImageSource="Image/Save-as-icon.png"/>
+                    <RibbonApplicationMenuItem Header="_About" ImageSource="Image/About.png"/>
+                    <RibbonApplicationMenuItem Header="_Exit" ImageSource="Image/Exit.png"/>
+
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
+            <RibbonTab Name="tabHome" Header="Home">
+                <RibbonGroup Name="Image" Header="Image">
+                    <RibbonButton Name="Select" Margin="-5,8,-14,-24" >
+                        <RibbonButton.Background>
+                            <ImageBrush Stretch="Uniform" ImageSource="Image/DottedPath1.jpg"/>
+                        </RibbonButton.Background>
+                        <RibbonButton.MouseOverBackground>
+                            <ImageBrush Stretch="Uniform" ImageSource="Image/DottedPath1.jpg"/>
+                        </RibbonButton.MouseOverBackground>
+                        <RibbonButton.FocusedBackground>
+                            <ImageBrush Stretch="Uniform" ImageSource="Image/DottedPath1.jpg"/>
+                        </RibbonButton.FocusedBackground>
+                    </RibbonButton>
+                </RibbonGroup>
+
+                <RibbonGroup Name="grTool" Header="Tools">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <RibbonButton Grid.Column="0" Name="btnPencil" Width="30" Height="20" ToolTip="Pencil" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/Pencil-icon.png"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Pencil-icon.png" Stretch="Uniform"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Pencil-icon.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Pencil-icon.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+
+                            <RibbonButton Name="btnErazer" Width="30" Grid.Column="2" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/eraser.png"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/eraser.png" Stretch="Uniform"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/eraser.png"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/eraser.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <RibbonButton Grid.Column="0" x:Name="btnBucket" Width="30" Height="20" ToolTip="Bucket" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/Fill Color.png" Stretch="Uniform"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Fill Color.png" Stretch="Uniform"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Fill Color.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Fill Color.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+                            <RibbonButton Grid.Column="1" x:Name="btnText" Width="30" Height="20" FontWeight="Bold" FontSize="16" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/A.png"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/A.png"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/A.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/A.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+                        </Grid>
+                    </Grid>
+                </RibbonGroup>
+
+
+                <RibbonGroup x:Name="grBrush" Header="Brush" Margin="0">
+                    <RibbonButton x:Name="btnBrush"  HorizontalAlignment="Stretch" Width="50" Height="66" ToolTip="Brush"  >
+                        <RibbonButton.PressedBackground>
+                            <ImageBrush ImageSource="Image/brush.png" Stretch="UniformToFill"/>
+                        </RibbonButton.PressedBackground>
+                        <RibbonButton.MouseOverBackground>
+                            <ImageBrush ImageSource="Image/brush.png" Stretch="UniformToFill"/>
+                        </RibbonButton.MouseOverBackground>
+                        <RibbonButton.FocusedBackground>
+                            <ImageBrush ImageSource="Image/brush.png" Stretch="UniformToFill"/>
+                        </RibbonButton.FocusedBackground>
+                        <RibbonButton.Background>
+                            <ImageBrush ImageSource="Image/brush.png" Stretch="UniformToFill"/>
+                        </RibbonButton.Background>
+                    </RibbonButton>
+                </RibbonGroup>
+
+                <RibbonGroup Name="grShapes" Width="110" Header="Shapes" Background="White" Margin="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <RibbonButton Grid.Column="0" Height="20" Width="30" ToolTip="Line" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/Editing-Line-icon.png"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush Stretch="Uniform" ImageSource="Image/Editing-Line-icon.png"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Editing-Line-icon.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Editing-Line-icon.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+
+                            <RibbonButton Grid.Column="1" Width="30" Height="20" ToolTip="Ellipse" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/Ellipse.png" Stretch="Uniform"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Ellipse.png" Stretch="Uniform"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Ellipse.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Ellipse.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+
+                            <RibbonButton Grid.Column="2" Width="30" Height="20" ToolTip="Rectangle" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/Rectangle.png" Stretch="Uniform"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Rectangle.png" Stretch="Uniform"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Rectangle.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Rectangle.png" Stretch="Uniform"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <RibbonButton Grid.Column="0" Name="btnTriangle" Width="30" Height="20" ToolTip="Triangle" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/Triangle.png"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Triangle.png"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Triangle.png" Stretch="Uniform"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Triangle.png"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+                            <RibbonButton Grid.Column="1" Name="btnArrow" Width="30" Height="20" ToolTip="Arrow" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/Arrow.png" Stretch="UniformToFill"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Arrow.png" Stretch="UniformToFill"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Arrow.png" Stretch="UniformToFill"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Arrow.png" Stretch="UniformToFill"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+
+                            <RibbonButton Grid.Column="2" Name="btnHeart" Width="30" Height="20" ToolTip="Heart" >
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/Heart.png"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/Heart.png"/>
+                                </RibbonButton.MouseOverBackground>
+                                <RibbonButton.FocusedBackground>
+                                    <ImageBrush ImageSource="Image/Heart.png"/>
+                                </RibbonButton.FocusedBackground>
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/Heart.png"/>
+                                </RibbonButton.Background>
+                            </RibbonButton>
+                        </Grid>
+                    </Grid>
+
+                </RibbonGroup>
+
+
+                <RibbonGroup Name="grThickness" Header="Size">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" Width="70" Height="50" Source="Image/Thicknesses.png" Stretch="UniformToFill"/>
+                        <ComboBox Grid.Row ="1" x:Name="cbxThickness" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="20" MaxDropDownHeight="1000" >
+                            <ComboBox.Background>
+                                <ImageBrush ImageSource="Image/Thickness1.png"/>
+                            </ComboBox.Background>
+                            <ComboBoxItem Content="_____________" ToolTip="1 px">
+                                <ComboBoxItem.Background>
+                                    <ImageBrush ImageSource="Image/Thickness1.png"/>
+                                </ComboBoxItem.Background>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="30" Width="70" ToolTip="3 px">
+                                <ComboBoxItem.Background>
+                                    <ImageBrush ImageSource="Image/Thickness3.png"/>
+                                </ComboBoxItem.Background>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="30" Width="70" ToolTip="5 px">
+                                <ComboBoxItem.Background>
+                                    <ImageBrush ImageSource="Image/Thickness5.png"/>
+                                </ComboBoxItem.Background>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="30" Width="70" ToolTip="7 px">
+                                <ComboBoxItem.Background>
+                                    <ImageBrush ImageSource="Image/Thickness7.png"/>
+                                </ComboBoxItem.Background>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                </RibbonGroup>
+
+                <RibbonGroup Name="grColor" Header="Colors">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Name="btnColor1" Width="40" Height="40" Grid.Row="0" Background="Black" >
+                            </Label>
+                            <Label Content="Current Color" Grid.Row="1"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Margin="5, 0, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Width="20" Height="20" Background="Black" HorizontalAlignment="Left" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="White" HorizontalAlignment="Left" Margin="23, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FF880015" HorizontalAlignment="Left" Margin="46, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FFED1C24" HorizontalAlignment="Left" Margin="69, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FF22B14C" HorizontalAlignment="Left" Margin="92, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FF00A2E8" HorizontalAlignment="Left" Margin="115, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FF3F48CC" HorizontalAlignment="Left" Margin="138, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FFA349A4" HorizontalAlignment="Left" Margin="161, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="Red" HorizontalAlignment="Left" Margin="184, 0, 0, 0" />
+                            <Button Grid.Row="0" Width="20" Height="20" Background="#FFFF7F27" HorizontalAlignment="Left" Margin="207, 0, 0, 0" />
+
+                            <Button Grid.Row="1" Width="20" Height="20" Background="Red" HorizontalAlignment="Left" Margin="0, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFF1E1E" HorizontalAlignment="Left" Margin="23, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFF3C3C" HorizontalAlignment="Left" Margin="46, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFF5A5A" HorizontalAlignment="Left" Margin="69, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFF7878" HorizontalAlignment="Left" Margin="92, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFF9696" HorizontalAlignment="Left" Margin="115, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFFB4B4" HorizontalAlignment="Left" Margin="138, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFFD2D2" HorizontalAlignment="Left" Margin="161, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="#FFFFF0F0" HorizontalAlignment="Left" Margin="184, 2, 0, 0" />
+                            <Button Grid.Row="1" Width="20" Height="20" Background="White" HorizontalAlignment="Left" Margin="207, 2, 0, 0" />
+
+                            <Button Grid.Row="2" Width="20" Height="20" Background="Lime" HorizontalAlignment="Left" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00F500" HorizontalAlignment="Left" Margin="23, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00E100" HorizontalAlignment="Left" Margin="46, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00D700" HorizontalAlignment="Left" Margin="69, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00CD00" HorizontalAlignment="Left" Margin="92, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00C300" HorizontalAlignment="Left" Margin="115, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00B900" HorizontalAlignment="Left" Margin="138, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00AF00" HorizontalAlignment="Left" Margin="161, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00AF00" HorizontalAlignment="Left" Margin="184, 2, 0, 0" />
+                            <Button Grid.Row="2" Width="20" Height="20" Background="#FF00A500" HorizontalAlignment="Left" Margin="207, 2, 0, 0" />
+
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <RibbonButton Grid.Row="0" Name="btnEditColor" Width="40" Height="40" Margin="10, 0, 0, 0" >
+                                <RibbonButton.Background>
+                                    <ImageBrush ImageSource="Image/EditColor.png" Stretch="UniformToFill"/>
+                                </RibbonButton.Background>
+                                <RibbonButton.PressedBackground>
+                                    <ImageBrush ImageSource="Image/EditColor.png" Stretch="UniformToFill"/>
+                                </RibbonButton.PressedBackground>
+                                <RibbonButton.MouseOverBackground>
+                                    <ImageBrush ImageSource="Image/EditColor.png" Stretch="UniformToFill"/>
+                                </RibbonButton.MouseOverBackground>
+                            </RibbonButton>
+                            <Label Grid.Row ="1" Content="Edit Colors" Margin="5, 0, 0, 0" />
+                        </Grid>
+                    </Grid>
+                </RibbonGroup>
+
+                <RibbonGroup Name="Undo_Redo" Header="Undo/Redo">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <RibbonButton Grid.Column="0" Name="btnUndo" Width="40" Height="40" Margin="0,10,0,-10">
+                            <RibbonButton.Background>
+                                <ImageBrush ImageSource="Image/Undo.png" Stretch="UniformToFill"/>
+                            </RibbonButton.Background>
+                            <RibbonButton.MouseOverBackground>
+                                <ImageBrush ImageSource="Image/Undo.png" Stretch="UniformToFill"/>
+                            </RibbonButton.MouseOverBackground>
+                            <RibbonButton.PressedBackground>
+                                <ImageBrush ImageSource="Image/Undo.png" Stretch="UniformToFill"/>
+                            </RibbonButton.PressedBackground>
+                        </RibbonButton>
+                        
+                        <RibbonButton Grid.Column="1" Name="btnRedo" Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,-10">
+                            <RibbonButton.Background>
+                                <ImageBrush ImageSource="Image/Redo.png" Stretch="UniformToFill"/>
+                            </RibbonButton.Background>
+                            <RibbonButton.MouseOverBackground>
+                                <ImageBrush ImageSource="Image/Redo.png" Stretch="UniformToFill"/>
+                            </RibbonButton.MouseOverBackground>
+                            <RibbonButton.PressedBackground>
+                                <ImageBrush ImageSource="Image/Redo.png" Stretch="UniformToFill"/>
+                            </RibbonButton.PressedBackground>
+                        </RibbonButton>
+                    </Grid>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
     </Grid>
 </Window>

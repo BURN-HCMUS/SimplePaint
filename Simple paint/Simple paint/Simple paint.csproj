@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -93,6 +94,59 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\A.png" />
+    <Resource Include="Image\Antistatic Brush.jpg" />
+    <Resource Include="Image\Arrow.png" />
+    <Resource Include="Image\Bold.png" />
+    <Resource Include="Image\brush.png" />
+    <Resource Include="Image\cursor.png" />
+    <Resource Include="Image\EditColor.png" />
+    <Resource Include="Image\Editing-Line-icon.png" />
+    <Resource Include="Image\Editing-Line-Width-icon.png" />
+    <Resource Include="Image\Ellipse.png" />
+    <Resource Include="Image\eraser.png" />
+    <Resource Include="Image\File-btn.png" />
+    <Resource Include="Image\Heart.png" />
+    <Resource Include="Image\Italic.png" />
+    <Resource Include="Image\Open-icon.png" />
+    <Resource Include="Image\open.png" />
+    <Resource Include="Image\Paint-bucket.png" />
+    <Resource Include="Image\Paint_brush.cur" />
+    <Resource Include="Image\Pencil-icon.png" />
+    <Resource Include="Image\Rectangle.png" />
+    <Resource Include="Image\Save-as-icon.png" />
+    <Resource Include="Image\save.png" />
+    <Resource Include="Image\Thickness1.png" />
+    <Resource Include="Image\Thickness3.png" />
+    <Resource Include="Image\Thickness5.png" />
+    <Resource Include="Image\Thickness7.png" />
+    <Resource Include="Image\Thicknesses.png" />
+    <Resource Include="Image\Triangle.png" />
+    <Resource Include="Image\Underlined.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Redo.png" />
+    <Resource Include="Image\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\About.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\paint-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\paint.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\DottedPath1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Fill Color.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
