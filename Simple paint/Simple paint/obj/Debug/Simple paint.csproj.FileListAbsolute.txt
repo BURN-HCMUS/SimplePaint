@@ -1,0 +1,15 @@
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\bin\Debug\Simple paint.exe.config
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\bin\Debug\Simple paint.exe
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\bin\Debug\Simple paint.pdb
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint.csprojAssemblyReference.cache
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\MainWindow.g.cs
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\App.g.cs
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint_MarkupCompile.cache
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint_MarkupCompile.lref
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\MainWindow.baml
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint.g.resources
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple_paint.Properties.Resources.resources
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint.csproj.GenerateResource.cache
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint.csproj.CoreCompileInputs.cache
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint.exe
+C:\GITHUB\SimplePaint\Simple paint\Simple paint\obj\Debug\Simple paint.pdb
