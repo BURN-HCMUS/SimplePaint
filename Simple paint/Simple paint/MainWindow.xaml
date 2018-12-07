@@ -44,7 +44,7 @@
                         <ImageBrush ImageSource="Image/File-btn.png"/>
                     </RibbonApplicationMenu.Background>
 
-                    <RibbonApplicationMenuItem Header="_Open" InputGestureText="Ctrl+O" ImageSource="Image/Open-icon.png" Click="MenuItem_Click" />
+                    <RibbonApplicationMenuItem Header="_Open" InputGestureText="Ctrl+O" ImageSource="Image/Open-icon.png" Click="Exit" />
                     <RibbonApplicationMenuItem Header="_Save" InputGestureText="Ctrl+S" ImageSource="Image/save.png"/>
                     <RibbonApplicationMenuItem Header="S_ave As" ImageSource="Image/Save-as-icon.png"/>
                     <RibbonApplicationMenuItem Header="_About" ImageSource="Image/About.png"/>
@@ -290,7 +290,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Image Grid.Row="0" Width="70" Height="50" Source="Image/Thicknesses.png" Stretch="UniformToFill"/>
-                        <ComboBox Grid.Row ="1" x:Name="cbxThickness" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="20" MaxDropDownHeight="1000" >
+                        <ComboBox Grid.Row ="1" x:Name="cbxThickness" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="20" MaxDropDownHeight="1000" SelectionChanged="cbxThickness_SelectionChanged">
                             <ComboBox.Background>
                                 <ImageBrush ImageSource="Image/Thickness1.png"/>
                             </ComboBox.Background>
@@ -342,38 +342,38 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="Black" HorizontalAlignment="Left" MouseOverBackground="Black" PressedBackground="Black"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="White" HorizontalAlignment="Left" Margin="23, 0, 0, 0" MouseOverBackground="White" PressedBackground="White" />
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF880015" HorizontalAlignment="Left" Margin="46, 0, 0, 0" MouseOverBackground="#FF880015" PressedBackground="#FF880015" />
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FFED1C24" HorizontalAlignment="Left" Margin="69, 0, 0, 0" MouseOverBackground="#FFED1C24" PressedBackground="#FFED1C24"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF22B14C" HorizontalAlignment="Left" Margin="92, 0, 0, 0" MouseOverBackground="#FF22B14C" PressedBackground="#FF22B14C"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF00A2E8" HorizontalAlignment="Left" Margin="115, 0, 0, 0" MouseOverBackground="#FF00A2E8" PressedBackground="#FF00A2E8"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF3F48CC" HorizontalAlignment="Left" Margin="138, 0, 0, 0" MouseOverBackground="#FF3F48CC" PressedBackground="#FF3F48CC"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FFA349A4" HorizontalAlignment="Left" Margin="161, 0, 0, 0" MouseOverBackground="#FFA349A4" PressedBackground="#FFA349A4"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="Red" HorizontalAlignment="Left" Margin="184, 0, 0, 0" MouseOverBackground="Red" PressedBackground="Red"/>
-                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FFFF7F27" HorizontalAlignment="Left" Margin="207, 0, 0, 0" MouseOverBackground="#FFFF7F27" PressedBackground="#FFFF7F27"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="Black" HorizontalAlignment="Left" MouseOverBackground="Black" PressedBackground="Black" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="White" HorizontalAlignment="Left" Margin="23, 0, 0, 0" MouseOverBackground="White" PressedBackground="White" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF880015" HorizontalAlignment="Left" Margin="46, 0, 0, 0" MouseOverBackground="#FF880015" PressedBackground="#FF880015" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FFED1C24" HorizontalAlignment="Left" Margin="69, 0, 0, 0" MouseOverBackground="#FFED1C24" PressedBackground="#FFED1C24" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF22B14C" HorizontalAlignment="Left" Margin="92, 0, 0, 0" MouseOverBackground="#FF22B14C" PressedBackground="#FF22B14C" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF00A2E8" HorizontalAlignment="Left" Margin="115, 0, 0, 0" MouseOverBackground="#FF00A2E8" PressedBackground="#FF00A2E8" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FF3F48CC" HorizontalAlignment="Left" Margin="138, 0, 0, 0" MouseOverBackground="#FF3F48CC" PressedBackground="#FF3F48CC" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FFA349A4" HorizontalAlignment="Left" Margin="161, 0, 0, 0" MouseOverBackground="#FFA349A4" PressedBackground="#FFA349A4" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="Red" HorizontalAlignment="Left" Margin="184, 0, 0, 0" MouseOverBackground="Red" PressedBackground="Red" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="0" Width="20" Height="20" Background="#FFFF7F27" HorizontalAlignment="Left" Margin="207, 0, 0, 0" MouseOverBackground="#FFFF7F27" PressedBackground="#FFFF7F27" Click="btnColor_Click"/>
 
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="Red" HorizontalAlignment="Left" Margin="0, 2, 0, 0" MouseOverBackground="Red" PressedBackground="Red"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF1E1E" HorizontalAlignment="Left" Margin="23, 2, 0, 0" MouseOverBackground="#FFFF1E1E" PressedBackground="#FFFF1E1E"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF3C3C" HorizontalAlignment="Left" Margin="46, 2, 0, 0" MouseOverBackground="#FFFF3C3C" PressedBackground="#FFFF3C3C"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF5A5A" HorizontalAlignment="Left" Margin="69, 2, 0, 0" MouseOverBackground="#FFFF5A5A" PressedBackground="#FFFF5A5A"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF7878" HorizontalAlignment="Left" Margin="92, 2, 0, 0" MouseOverBackground="#FFFF7878" PressedBackground="#FFFF7878"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF9696" HorizontalAlignment="Left" Margin="115, 2, 0, 0" MouseOverBackground="#FFFF9696" PressedBackground="#FFFF9696"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFFB4B4" HorizontalAlignment="Left" Margin="138, 2, 0, 0" MouseOverBackground="#FFFFB4B4" PressedBackground="#FFFFB4B4"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFFD2D2" HorizontalAlignment="Left" Margin="161, 2, 0, 0" MouseOverBackground="#FFFFD2D2" PressedBackground="#FFFFD2D2"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFFF0F0" HorizontalAlignment="Left" Margin="184, 2, 0, 0" MouseOverBackground="#FFFFF0F0" PressedBackground="#FFFFF0F0"/>
-                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="White" HorizontalAlignment="Left" Margin="207, 2, 0, 0" MouseOverBackground="White" PressedBackground="White"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="Red" HorizontalAlignment="Left" Margin="0, 2, 0, 0" MouseOverBackground="Red" PressedBackground="Red" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF1E1E" HorizontalAlignment="Left" Margin="23, 2, 0, 0" MouseOverBackground="#FFFF1E1E" PressedBackground="#FFFF1E1E" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF3C3C" HorizontalAlignment="Left" Margin="46, 2, 0, 0" MouseOverBackground="#FFFF3C3C" PressedBackground="#FFFF3C3C" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF5A5A" HorizontalAlignment="Left" Margin="69, 2, 0, 0" MouseOverBackground="#FFFF5A5A" PressedBackground="#FFFF5A5A" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF7878" HorizontalAlignment="Left" Margin="92, 2, 0, 0" MouseOverBackground="#FFFF7878" PressedBackground="#FFFF7878" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFF9696" HorizontalAlignment="Left" Margin="115, 2, 0, 0" MouseOverBackground="#FFFF9696" PressedBackground="#FFFF9696" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFFB4B4" HorizontalAlignment="Left" Margin="138, 2, 0, 0" MouseOverBackground="#FFFFB4B4" PressedBackground="#FFFFB4B4" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFFD2D2" HorizontalAlignment="Left" Margin="161, 2, 0, 0" MouseOverBackground="#FFFFD2D2" PressedBackground="#FFFFD2D2" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="#FFFFF0F0" HorizontalAlignment="Left" Margin="184, 2, 0, 0" MouseOverBackground="#FFFFF0F0" PressedBackground="#FFFFF0F0" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="1" Width="20" Height="20" Background="White" HorizontalAlignment="Left" Margin="207, 2, 0, 0" MouseOverBackground="White" PressedBackground="White" Click="btnColor_Click"/>
 
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="Lime" HorizontalAlignment="Left" MouseOverBackground="Lime" PressedBackground="Lime"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00F500" HorizontalAlignment="Left" Margin="23, 2, 0, 0" MouseOverBackground="#FF00F500" PressedBackground="#FF00F500"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00E100" HorizontalAlignment="Left" Margin="46, 2, 0, 0" MouseOverBackground="#FF00E100" PressedBackground="#FF00E100"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00D700" HorizontalAlignment="Left" Margin="69, 2, 0, 0" MouseOverBackground="#FF00D700" PressedBackground="#FF00D700"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00CD00" HorizontalAlignment="Left" Margin="92, 2, 0, 0" MouseOverBackground="#FF00CD00" PressedBackground="#FF00CD00"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00C300" HorizontalAlignment="Left" Margin="115, 2, 0, 0" MouseOverBackground="#FF00C300" PressedBackground="#FF00C300"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00B900" HorizontalAlignment="Left" Margin="138, 2, 0, 0" MouseOverBackground="#FF00B900" PressedBackground="#FF00B900"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00AF00" HorizontalAlignment="Left" Margin="161, 2, 0, 0" MouseOverBackground="#FF00AF00" PressedBackground="#FF00AF00"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00AF00" HorizontalAlignment="Left" Margin="184, 2, 0, 0" MouseOverBackground="#FF00AF00" PressedBackground="#FF00AF00"/>
-                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00A500" HorizontalAlignment="Left" Margin="207, 2, 0, 0" MouseOverBackground="#FF00A500" PressedBackground="#FF00A500"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="Lime" HorizontalAlignment="Left" MouseOverBackground="Lime" PressedBackground="Lime" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00F500" HorizontalAlignment="Left" Margin="23, 2, 0, 0" MouseOverBackground="#FF00F500" PressedBackground="#FF00F500" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00E100" HorizontalAlignment="Left" Margin="46, 2, 0, 0" MouseOverBackground="#FF00E100" PressedBackground="#FF00E100" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00D700" HorizontalAlignment="Left" Margin="69, 2, 0, 0" MouseOverBackground="#FF00D700" PressedBackground="#FF00D700" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00CD00" HorizontalAlignment="Left" Margin="92, 2, 0, 0" MouseOverBackground="#FF00CD00" PressedBackground="#FF00CD00" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00C300" HorizontalAlignment="Left" Margin="115, 2, 0, 0" MouseOverBackground="#FF00C300" PressedBackground="#FF00C300" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00B900" HorizontalAlignment="Left" Margin="138, 2, 0, 0" MouseOverBackground="#FF00B900" PressedBackground="#FF00B900" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00AF00" HorizontalAlignment="Left" Margin="161, 2, 0, 0" MouseOverBackground="#FF00AF00" PressedBackground="#FF00AF00" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00AF00" HorizontalAlignment="Left" Margin="184, 2, 0, 0" MouseOverBackground="#FF00AF00" PressedBackground="#FF00AF00" Click="btnColor_Click"/>
+                            <RibbonButton Grid.Row="2" Width="20" Height="20" Background="#FF00A500" HorizontalAlignment="Left" Margin="207, 2, 0, 0" MouseOverBackground="#FF00A500" PressedBackground="#FF00A500" Click="btnColor_Click"/>
 
                         </Grid>
                         <Grid Grid.Column="2">
@@ -381,7 +381,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <RibbonButton Grid.Row="0" Name="btnEditColor" Width="40" Height="40" Margin="10, 0, 0, 0" >
+                            <RibbonButton Grid.Row="0" Name="btnEditColor" Width="40" Height="40" Margin="10, 0, 0, 0" Click="btnEditColors_Click">
                                 <RibbonButton.Background>
                                     <ImageBrush ImageSource="Image/EditColor.png" Stretch="UniformToFill"/>
                                 </RibbonButton.Background>

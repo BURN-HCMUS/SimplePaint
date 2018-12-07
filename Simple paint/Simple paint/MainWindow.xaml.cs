@@ -54,12 +54,16 @@ namespace Simple_paint
             penColor = Colors.Black;
             penThickness = 1;
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void SimplePaint_Loaded(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.ShowDialog();
+            fontSize = 8;
+            fontColor = Colors.Black;
+            fontStyle = FontStyles.Normal;
+            fontWeight = FontWeights.Normal;
+            decoration = null;
+
         }
+        #region Pencil and Brush
         private void btnPencil_Click(object sender, RoutedEventArgs e)
         {
             screen.drawType = DrawType.pencil;
@@ -72,6 +76,7 @@ namespace Simple_paint
             penThickness = 3;
             paintCanvas.Cursor = Cursors.Pen;
         }
+        #endregion
         #region Draw simple picture
         private void btnLine_Click(object sender, RoutedEventArgs e)
         {
@@ -149,7 +154,6 @@ namespace Simple_paint
 
        
         #endregion
-
         #region MouseMove
         private void paintCanvas_MouseMove(object sender, MouseEventArgs e)
         {
@@ -320,19 +324,61 @@ namespace Simple_paint
 
         }
         #endregion
+        #region Change Thickness
+        private void cbxThickness_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (cbxThickness.SelectedIndex == 0)
+            {
+                penThickness = 1;
+            }
+            else if (cbxThickness.SelectedIndex == 1)
+            {
+                penThickness = 3;
+            }
+            else if (cbxThickness.SelectedIndex == 2)
+            {
+                penThickness = 5;
+            }
+            else if (cbxThickness.SelectedIndex == 3)
+            {
+                penThickness = 7;
+            }
+        }
+        #endregion
+        #region Change Color
+        void btnColor_Click(object sender, RoutedEventArgs e)
+        {
+            Button btnColor = (Button)sender;
+            Color color = ((SolidColorBrush)btnColor.Background).Color;
+            btnColor1.Background = new SolidColorBrush(color);
+            penColor = color;
+        }
+
+        private void btnEditColors_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.ColorDialog dlg = new System.Windows.Forms.ColorDialog();
+            dlg.AllowFullOpen = true;
+            dlg.ShowDialog();
+            Color color = new Color();
+            color.A = dlg.Color.A;
+            color.R = dlg.Color.R;
+            color.G = dlg.Color.G;
+            color.B = dlg.Color.B;
+            btnColor1.Background = new SolidColorBrush(color);
+            penColor = color;
+        }
+        #endregion
+        #region Exit 
         private void SimplePaint_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
         }
-        private void SimplePaint_Loaded(object sender, RoutedEventArgs e)
+        private void Exit(object sender, RoutedEventArgs e)
         {
-            fontSize = 8;
-            fontColor = Colors.Black;
-            fontStyle = FontStyles.Normal;
-            fontWeight = FontWeights.Normal;
-            decoration = null;
-
+            Application.Current.Shutdown();
         }
+        #endregion
 
     }
 }
