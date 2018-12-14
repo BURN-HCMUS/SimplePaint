@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls.Primitives;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Simple_paint
 {
@@ -81,6 +82,59 @@ namespace Simple_paint
             img.Source = BitmapToImageSource(CanvasToBitmap(canvas));
             canvas.Children.Clear();
             canvas.Children.Add(img);
+        }
+        private string CreateTempFile()
+        {
+            string fileName = string.Empty;
+
+            try
+            {
+                fileName = System.IO.Path.GetTempFileName();
+
+                // Create a FileInfo object to set the file's attributes
+                System.IO.FileInfo fileInfo = new System.IO.FileInfo(fileName);
+
+                // Set the Attribute property of this file to Temporary. 
+                fileInfo.Attributes = System.IO.FileAttributes.Temporary;
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Unable to create tempfile\nDetail: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            return fileName;
+        }
+        public string openFile()
+        {
+            canvas.Children.Clear();
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Open";
+            ofd.Filter = "Bitmap files (*.bmp)|*.bmp|JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG (*.png)|*.png|All files (*.*)|*.*";
+            try
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    ImageBrush brush = new ImageBrush();
+                    BitmapImage img = new BitmapImage(new Uri(ofd.FileName, UriKind.Relative));
+                    var encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(img));
+                    string tempPath = CreateTempFile();
+                    using (var stream = File.Open(tempPath, FileMode.Open))
+                    {
+                        encoder.Save(stream);
+                        stream.Close();
+                    }
+                    BitmapImage temp = new BitmapImage(new Uri(tempPath, UriKind.Relative));
+                    brush.ImageSource = temp;
+                    canvas.Background = brush;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ofd.FileName + "\nSimple paint cannot read this file.\nThis is not a valid bitmap file, or its format is not currently supported.", "Simple paint", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return ofd.FileName;
         }
     }
 }

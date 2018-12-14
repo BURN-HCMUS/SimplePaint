@@ -156,5 +156,8 @@
   <ItemGroup>
     <Resource Include="Image\Fill Color.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\new.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

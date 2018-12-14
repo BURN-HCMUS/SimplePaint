@@ -44,7 +44,8 @@
                         <ImageBrush ImageSource="Image/File-btn.png"/>
                     </RibbonApplicationMenu.Background>
 
-                    <RibbonApplicationMenuItem Header="_Open" InputGestureText="Ctrl+O" ImageSource="Image/Open-icon.png" Click="Exit" />
+                    <RibbonApplicationMenuItem Header="_New" InputGestureText="Ctrl+N" ImageSource="Image/new.png" Click="File_New_Click" />
+                    <RibbonApplicationMenuItem Header="_Open" InputGestureText="Ctrl+O" ImageSource="Image/Open-icon.png" Click="Menu_Open_File" />
                     <RibbonApplicationMenuItem Header="_Save" InputGestureText="Ctrl+S" ImageSource="Image/save.png"/>
                     <RibbonApplicationMenuItem Header="S_ave As" ImageSource="Image/Save-as-icon.png"/>
                     <RibbonApplicationMenuItem Header="_About" ImageSource="Image/About.png"/>

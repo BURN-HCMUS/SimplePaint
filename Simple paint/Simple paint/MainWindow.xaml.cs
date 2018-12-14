@@ -379,6 +379,21 @@ namespace Simple_paint
             Application.Current.Shutdown();
         }
         #endregion
-
+        private void File_New_Click(object sender, RoutedEventArgs e)
+        {
+            screen.canvas.Children.RemoveRange(0, paintCanvas.Children.Count);
+            screen.canvas.Background = new SolidColorBrush(Colors.White);
+            screen = new Layer(paintCanvas);
+            capture = false;
+            penColor = Colors.Black;
+            penThickness = 1;
+            btnColor1.Background = new SolidColorBrush(Colors.Black);
+            curFilePath = null;
+            cbxThickness.SelectedIndex = 0;
+        }
+        private void Menu_Open_File(object sender, RoutedEventArgs e)
+        {
+            curFilePath = screen.openFile();
+        }
     }
 }
