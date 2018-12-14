@@ -46,8 +46,8 @@
 
                     <RibbonApplicationMenuItem Header="_New" InputGestureText="Ctrl+N" ImageSource="Image/new.png" Click="File_New_Click" />
                     <RibbonApplicationMenuItem Header="_Open" InputGestureText="Ctrl+O" ImageSource="Image/Open-icon.png" Click="Menu_Open_File" />
-                    <RibbonApplicationMenuItem Header="_Save" InputGestureText="Ctrl+S" ImageSource="Image/save.png"/>
-                    <RibbonApplicationMenuItem Header="S_ave As" ImageSource="Image/Save-as-icon.png"/>
+                    <RibbonApplicationMenuItem Header="_Save" InputGestureText="Ctrl+S" ImageSource="Image/save.png" Click="Menu_Save_Click"/>
+                    <RibbonApplicationMenuItem Header="S_ave As" ImageSource="Image/Save-as-icon.png" Click="Menu_SaveAs_Click"/>
                     <RibbonApplicationMenuItem Header="_About" ImageSource="Image/About.png"/>
                     <RibbonApplicationMenuItem Header="_Exit" ImageSource="Image/Exit.png"/>
 
@@ -404,7 +404,7 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <RibbonButton Grid.Column="0" Name="btnUndo" Width="40" Height="40" Margin="0,10,0,-10">
+                        <RibbonButton Grid.Column="0" Name="btnUndo" Width="40" Height="40" Margin="0,10,0,-10" Click="Undo_Click">
                             <RibbonButton.Background>
                                 <ImageBrush ImageSource="Image/Undo.png" Stretch="UniformToFill"/>
                             </RibbonButton.Background>
@@ -416,7 +416,7 @@
                             </RibbonButton.PressedBackground>
                         </RibbonButton>
                         
-                        <RibbonButton Grid.Column="1" Name="btnRedo" Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,-10">
+                        <RibbonButton Grid.Column="1" Name="btnRedo" Width="40" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,-10" Click="Redo_Click">
                             <RibbonButton.Background>
                                 <ImageBrush ImageSource="Image/Redo.png" Stretch="UniformToFill"/>
                             </RibbonButton.Background>

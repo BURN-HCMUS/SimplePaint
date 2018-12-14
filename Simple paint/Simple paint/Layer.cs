@@ -20,6 +20,8 @@ namespace Simple_paint
 
     class Layer
     {
+        public Stack<UIElement> undoStack = new Stack<UIElement>();
+        public Stack<UIElement> redoStack = new Stack<UIElement>();
         public Canvas canvas;
         public DrawType drawType;
         public Layer(Canvas c)
@@ -58,12 +60,12 @@ namespace Simple_paint
         public void DrawShape(ContentControl control)
         {
             canvas.Children.RemoveAt(canvas.Children.Count - 1);
-            RefreshCanvas();
+           // RefreshCanvas();
             canvas.Children.Add(control);
         }
         public void DrawShape(System.Windows.Shapes.Shape shape)
         {
-            RefreshCanvas();
+           // RefreshCanvas();
             canvas.Children.Add(shape);
         }
 
@@ -135,6 +137,59 @@ namespace Simple_paint
                 System.Windows.MessageBox.Show(ofd.FileName + "\nSimple paint cannot read this file.\nThis is not a valid bitmap file, or its format is not currently supported.", "Simple paint", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             return ofd.FileName;
+        }
+        public string SaveFile(string path)
+        {
+            Rect bounds = VisualTreeHelper.GetDescendantBounds(canvas);
+            double dpi = 96d;
+
+
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, dpi, dpi, System.Windows.Media.PixelFormats.Default);
+
+
+            DrawingVisual dv = new DrawingVisual();
+            using (DrawingContext dc = dv.RenderOpen())
+            {
+                VisualBrush vb = new VisualBrush(canvas);
+                dc.DrawRectangle(vb, null, new Rect(new System.Windows.Point(), bounds.Size));
+            }
+            rtb.Render(dv);
+            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
+
+            try
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+
+                pngEncoder.Save(ms);
+
+                ms.Close();
+                ms.Dispose();
+                System.Windows.Forms.SaveFileDialog dlg = new System.Windows.Forms.SaveFileDialog();
+                dlg.Title = "Save as";
+                dlg.Filter = "Bitmap files (*.bmp)|*.bmp|JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|PNG (*.png)|*.png|All files (*.*)|*.*";
+                if (path == null)
+                {
+                    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+
+                        string fileName = dlg.FileName;
+                        System.IO.File.WriteAllBytes(fileName, ms.ToArray());
+                        return fileName;
+                    }
+                }
+                else
+                {
+                    System.IO.File.WriteAllBytes(path, ms.ToArray());
+                }
+
+            }
+            catch (Exception err)
+            {
+                System.Windows.MessageBox.Show(err.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return path;
+
         }
     }
 }

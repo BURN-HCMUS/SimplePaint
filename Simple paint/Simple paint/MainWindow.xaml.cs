@@ -82,7 +82,7 @@ namespace Simple_paint
         {
             screen.drawType = DrawType.line;
             paintCanvas.Cursor = Cursors.Cross;
-            
+
         }
 
         private void btnEllipse_Click(object sender, RoutedEventArgs e)
@@ -152,7 +152,7 @@ namespace Simple_paint
             }
         }
 
-       
+
         #endregion
         #region MouseMove
         private void paintCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -308,6 +308,8 @@ namespace Simple_paint
                     screen.DrawShape(curControl);
                 }
                 curShape = null;
+                screen.undoStack.Push(screen.canvas.Children[screen.canvas.Children.Count - 1]);
+                screen.redoStack.Clear();
             }
             else if (screen.drawType == DrawType.line && curLine != null)
             {
@@ -320,8 +322,14 @@ namespace Simple_paint
                 line.Y2 = curLine.Y2;
                 screen.DrawShape(line);
                 curLine = null;
+                screen.undoStack.Push(screen.canvas.Children[screen.canvas.Children.Count - 1]);
+                screen.redoStack.Clear();
             }
-
+            else if (screen.drawType == DrawType.pencil || screen.drawType == DrawType.brush || screen.drawType == DrawType.erase)
+            {
+                screen.undoStack.Push(screen.canvas.Children[screen.canvas.Children.Count - 1]);
+                screen.redoStack.Clear();
+            }
         }
         #endregion
         #region Change Thickness
@@ -379,6 +387,7 @@ namespace Simple_paint
             Application.Current.Shutdown();
         }
         #endregion
+        #region FILE OPTION
         private void File_New_Click(object sender, RoutedEventArgs e)
         {
             screen.canvas.Children.RemoveRange(0, paintCanvas.Children.Count);
@@ -395,5 +404,47 @@ namespace Simple_paint
         {
             curFilePath = screen.openFile();
         }
+        private void Menu_Save_Click(object sender, RoutedEventArgs e)
+        {
+
+            curFilePath = screen.SaveFile(curFilePath);
+
+        }
+        private void Menu_SaveAs_Click(object sender, RoutedEventArgs e)
+        {
+            string temp;
+            temp = curFilePath;
+            curFilePath = null;
+            string save = screen.SaveFile(curFilePath);
+            if (save == null)
+            {
+                curFilePath = temp;
+            }
+            else
+                curFilePath = screen.SaveFile(curFilePath);
+        }
+        #endregion
+        #region Undo & Redo
+        private void Undo_Click(object sender, RoutedEventArgs e)
+        {
+            if (screen.canvas.Children.Count != 0)
+            {
+
+                UIElement temp = screen.canvas.Children[screen.canvas.Children.Count - 1];
+                screen.undoStack.Pop();
+                screen.canvas.Children.Remove(temp);
+                screen.redoStack.Push(temp);
+            }
+        }
+        private void Redo_Click(object sender, RoutedEventArgs e)
+        {
+            if (screen.redoStack.Count != 0)
+            {
+                UIElement temp = screen.redoStack.Pop();
+                screen.undoStack.Push(temp);
+                screen.canvas.Children.Add(temp);
+            }
+        }
+        #endregion
     }
 }
